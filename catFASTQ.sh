@@ -11,7 +11,7 @@
 # cd ~/Desktop/Lab/Projects/Fei/
 
 
-make directories to put new data in
+# make directories to put new data in
 mkdir results
 
 mkdir ./results/fastqF
