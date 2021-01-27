@@ -41,14 +41,14 @@ lou$ cutadapt --version
 The following files should be in the same directory:
 - FASTQ files
 - cutadapt script
-- FASTA with primer sequence (V4-V5 only)
+- FASTA with primer sequences (V4-V5 only)
 
 
 ## Execute script
 1. Go to directory where your FASTQ files are stored
 
-  `cd ~/path/to/directory`
+`(cutadaptenv) lou$ cd ~/path/to/directory`
 
 2. Execute cutadapt script
 
-`sh cutadapt_script.sh`
+`(cutadaptenv) lou$ sh cutadapt_script.sh`
