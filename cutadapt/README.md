@@ -52,3 +52,43 @@ The following files should be in the same directory:
 2. Execute cutadapt script
 
 `(cutadaptenv) lou$ sh cutadapt_script.sh`
+
+## Interpret output
+
+The output file will have text that looks something like this:
+
+```
+This is cutadapt 3.2 with Python 3.8.6
+Command line parameters: -g CCAGCAGCYGCGGTAAN -G file:v4v5_revs.fasta -o cutadapt/SRR11487869_pass_1.fastq.gz -p cutadapt/SRR11487869_pass_2.fastq.gz SRR11487869_pass_1.fastq.gz SRR11487869_pass_2.fastq.gz
+Processing reads on 1 core in paired-end mode ...
+Finished in 10.70 s (81 µs/read; 0.74 M reads/minute).
+
+=== Summary ===
+
+Total read pairs processed:            132,777
+  Read 1 with adapter:                 130,937 (98.6%)
+  Read 2 with adapter:                 129,971 (97.9%)
+Pairs written (passing filters):       132,777 (100.0%)
+
+Total basepairs processed:    66,574,524 bp
+  Read 1:    33,303,745 bp
+  Read 2:    33,270,779 bp
+Total written (filtered):     61,962,009 bp (93.1%)
+  Read 1:    31,078,014 bp
+  Read 2:    30,883,995 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: CCAGCAGCYGCGGTAAN; Type: regular 5'; Length: 17; Trimmed: 130937 times
+
+No. of allowed errors:
+1-9 bp: 0; 10-16 bp: 1
+
+Overview of removed sequences
+length  count   expect	  max.err	  error counts
+3       3	      2074.6	  0	        3
+11	    2	       0.0	    1	        0 2
+```
+etc...
+
+Which shows that the forward primer was trimmed from 130,937 reads, out of 132,777 total reads in this file.
