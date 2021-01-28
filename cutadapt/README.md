@@ -55,7 +55,7 @@ The following files should be in the same directory:
 
 ## Interpret output
 
-The output file will have text that looks something like this:
+The output text file will look something like this:
 
 ```
 This is cutadapt 3.2 with Python 3.8.6
