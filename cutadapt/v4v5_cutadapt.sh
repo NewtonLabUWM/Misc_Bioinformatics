@@ -25,7 +25,7 @@ for fileR1 in *_R1*; do
 	fileR2=${fileR1/R1/R2}
 	printf "\nTrimming ${fileR1} and ${fileR2} . . .\n"
 	cutadapt -g "CCAGCAGCYGCGGTAAN" -G file:v4v5_revs.fasta \
-	-o cutadapt/$fileR1 -p cutadapt/$fileR2 \
+	-m 50 -o cutadapt/$fileR1 -p cutadapt/$fileR2 \
 	$fileR1 $fileR2 >> v4v5_cutadapt_output.txt
 done
 
