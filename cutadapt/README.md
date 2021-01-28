@@ -45,9 +45,9 @@ The following files should be in the same directory:
 
 
 ## Execute script
-1. Go to directory where your FASTQ files are stored
+1. Go to the directory described above
 
-`(cutadaptenv) lou$ cd ~/path/to/directory`
+`(cutadaptenv) lou$ cd ~/path/to/FASTQs`
 
 2. Execute cutadapt script
 
