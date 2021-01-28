@@ -85,9 +85,9 @@ No. of allowed errors:
 1-9 bp: 0; 10-16 bp: 1
 
 Overview of removed sequences
-length  count   expect	  max.err	  error counts
-3       3	      2074.6	  0	        3
-11	    2	       0.0	    1	        0 2
+length	count	expect	max.err	error counts
+3	3	2074.6	0	3
+11	2	0.0	1	0 2
 ```
 etc...
 
