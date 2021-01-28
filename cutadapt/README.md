@@ -12,7 +12,7 @@ Cutadapt [requires](https://cutadapt.readthedocs.io/en/stable/installation.html#
 
 ## Install Miniconda
 
-Because [conda](https://bioconda.github.io/user/install.html) makes life easier.
+Because it makes life [easier](https://bioconda.github.io/user/install.html).
 
 
 ## Install Cutadapt
