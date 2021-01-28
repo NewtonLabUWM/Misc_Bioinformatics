@@ -94,4 +94,4 @@ etc...
 Which shows that the forward primer was trimmed from 130,937 reads, out of 132,777 total reads in this file.
 
 
-These files can be processed in [DADA2](https://benjjneb.github.io/dada2/tutorial.html)!
+These files can be processed using [DADA2](https://benjjneb.github.io/dada2/tutorial.html)!
