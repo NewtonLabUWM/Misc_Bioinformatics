@@ -88,8 +88,10 @@ Overview of removed sequences
 length	count	expect	max.err	error counts
 3	3	2074.6	0	3
 11	2	0.0	1	0 2
-```
+
+
 etc...
+```
 
 Which shows that the forward primer was trimmed from 130,937 reads, out of 132,777 total reads in this file.
 
