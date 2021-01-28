@@ -1,4 +1,4 @@
-# Trimming primer sequences from 16S rRNA gene sequences
+# Trimming primers from 16S rRNA gene sequences
 
 ## Check Python version
 
