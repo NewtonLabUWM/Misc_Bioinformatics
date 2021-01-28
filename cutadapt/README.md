@@ -47,11 +47,15 @@ The following files should be in the same directory:
 ## Execute script
 1. Go to the directory described above
 
-`(cutadaptenv) lou$ cd ~/path/to/FASTQs`
+```
+(cutadaptenv) lou$ cd ~/path/to/FASTQs
+```
 
 2. Execute cutadapt script
 
-`(cutadaptenv) lou$ sh cutadapt_script.sh`
+```
+(cutadaptenv) lou$ sh cutadapt_script.sh
+```
 
 The [parameters](https://cutadapt.readthedocs.io/en/stable/guide.html) we typically choose are:
 
