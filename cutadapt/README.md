@@ -53,6 +53,18 @@ The following files should be in the same directory:
 
 `(cutadaptenv) lou$ sh cutadapt_script.sh`
 
+The [parameters](https://cutadapt.readthedocs.io/en/stable/guide.html) we typically choose are:
+
+| Flag | Description |
+| ---| --- |
+| -g | regular 5' primer |
+| -G | corresponding reverse file |
+| -m | set minimum length \* |
+| -o | location & name of output forward file |
+| -p | location & name of output reverse file |
+
+\* if this isn't set, you can end up with "empty" reads, that have a header but no sequence. This will complicate processing later.
+
 ## Interpret output
 
 The output text file will look something like this:
