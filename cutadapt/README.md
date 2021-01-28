@@ -25,7 +25,7 @@ lou$ conda activate cutadaptenv
 (cutadaptenv) lou$ cutadapt --version
 3.2
 ```
-You can see the venv is activated when it is at the beginning of the new line.
+You can see the venv is activated when its name is at the beginning of the prompt.
 
 Without the venv, Cutadapt commands will not work.
 
