@@ -36,10 +36,8 @@ remN = length(fastqFs) %% maxN
 # create sets of files
 fastqFsets.ls <- list()
 
-for(i in c(seq(length(fastqFs) %/% maxN), intN + 1)) {
-  
-  fastqFsets.ls[[i]] <- fastqFs[(maxN * (i - 1) + 1) : (i * maxN)]
-  
+for(i in c(seq(length(fastqFs) %/% maxN), intN + 1)) {  
+  fastqFsets.ls[[i]] <- fastqFs[(maxN * (i - 1) + 1) : (i * maxN)]  
   fastqFsets.ls[[intN + 1]] <- fastqFs[(maxN * intN + 1) : length(fastqFs)]
 }
 
@@ -47,8 +45,7 @@ for(i in c(seq(length(fastqFs) %/% maxN), intN + 1)) {
 # do same for Rs by changing file names
 fastqRsets.ls <- list()
 
-for(f in 1:length(fastqFsets.ls)){
-  
+for(f in 1:length(fastqFsets.ls)){  
   fastqRsets.ls[[f]] <- sub("fastqF", "fastqR", sub("_R1", "_R2", fastqFsets.ls[[f]]))
 }
 
@@ -60,10 +57,8 @@ for(f in 1:length(fastqFsets.ls)){
 # create sets of files
 filtFsets.ls <- list()
 
-for(i in c(seq(length(filtered_Fs) %/% maxN), intN + 1)) {
-  
-  filtFsets.ls[[i]] <- filtered_Fs[(maxN * (i - 1) + 1) : (i * maxN)]
-  
+for(i in c(seq(length(filtered_Fs) %/% maxN), intN + 1)) {  
+  filtFsets.ls[[i]] <- filtered_Fs[(maxN * (i - 1) + 1) : (i * maxN)]  
   filtFsets.ls[[intN + 1]] <- filtered_Fs[(maxN * intN + 1) : length(filtered_Fs)]
 }
 
@@ -72,7 +67,6 @@ for(i in c(seq(length(filtered_Fs) %/% maxN), intN + 1)) {
 filtRsets.ls <- list()
 
 for(f in 1:length(filtFsets.ls)){
-  
   filtRsets.ls[[f]] <- sub("fastqF", "fastqR", sub("F_filt", "R_filt", filtFsets.ls[[f]]))
 
 }
