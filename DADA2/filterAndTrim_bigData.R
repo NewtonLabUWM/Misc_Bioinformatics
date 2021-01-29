@@ -24,7 +24,7 @@ maxN = 20
 # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 
-# define variables
+# define integers & remainder
 intN = length(fastqFs) %/% maxN
 remN = length(fastqFs) %% maxN
 
@@ -33,9 +33,11 @@ remN = length(fastqFs) %% maxN
 ##############
 ### unfiltered
 
-# create sets of files
+# create list for sets of files
 fastqFsets.ls <- list()
 
+
+# subset files into groups containing as many files as defined above
 for(i in c(seq(length(fastqFs) %/% maxN), intN + 1)) {  
   fastqFsets.ls[[i]] <- fastqFs[(maxN * (i - 1) + 1) : (i * maxN)]  
   fastqFsets.ls[[intN + 1]] <- fastqFs[(maxN * intN + 1) : length(fastqFs)]
@@ -54,9 +56,11 @@ for(f in 1:length(fastqFsets.ls)){
 ############
 ### filtered
 
-# create sets of files
+# create list for sets of files
 filtFsets.ls <- list()
 
+
+# subset files into groups containing as many files as defined above
 for(i in c(seq(length(filtered_Fs) %/% maxN), intN + 1)) {  
   filtFsets.ls[[i]] <- filtered_Fs[(maxN * (i - 1) + 1) : (i * maxN)]  
   filtFsets.ls[[intN + 1]] <- filtered_Fs[(maxN * intN + 1) : length(filtered_Fs)]
@@ -76,10 +80,15 @@ for(f in 1:length(filtFsets.ls)){
 ###################
 ### filter and trim
 
+# create list for results matrices
 filtered_out.ls <- list()
 
 for(j in 1:length(fastqFsets.ls)) {
+  
+  # verbose progress
   cat("\n", format(Sys.time(), "%H:%M %p"), " - Filtering set ", j, " . . . \n")
+  
+  # filter and trim, one sample set at a time
   filtered_out.ls[[j]] <- filterAndTrim(fastqFsets.ls[[j]], filtFsets.ls[[j]],
                                         fastqRsets.ls[[j]], filtRsets.ls[[j]],
                                         maxEE = 2, maxN = 0, truncQ = 10,
@@ -88,8 +97,11 @@ for(j in 1:length(fastqFsets.ls)) {
 }
 
 
-# inspect how many reads were filtered out of each sample
+# unlist & combine results matrices
 filtered_out <- do.call(rbind, filtered_out.ls)
+
+
+# inspect how many reads were filtered out of each sample
 (1 - (filtered_out[,2] / filtered_out[,1])) * 100
 mean((1 - (filtered_out[,2] / filtered_out[,1])) * 100)
 # [1] 23.16235 % removed
