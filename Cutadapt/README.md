@@ -20,7 +20,7 @@ You made need to [initialize](https://docs.conda.io/projects/conda/en/latest/use
 
 
 ```
-lou$ conda init --all
+lou$ conda init --all 
 ```
 
 
