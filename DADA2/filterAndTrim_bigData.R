@@ -1,6 +1,12 @@
-#######################
-### Quality control ###
-#######################
+####################################################################
+### DADA2 many FASTQ files
+### filterAndTrim: https://rdrr.io/bioc/dada2/man/filterAndTrim.html
+### DADA2 tutorial: https://benjjneb.github.io/dada2/tutorial.html
+### Lou LaMartina, started Jan 28 2021
+####################################################################
+
+library(dada2)
+
 
 # give filtered files new names and paths
 filtered_Fs <- file.path(filtered_pathF, paste0(Sample_names, "_F_filt.fastq"))
