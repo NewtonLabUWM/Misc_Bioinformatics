@@ -15,7 +15,7 @@ Cutadapt [requires](https://cutadapt.readthedocs.io/en/stable/installation.html#
 Because it makes life [easier](https://bioconda.github.io/user/install.html).
 
 
-## Initialize Conda
+## Initialize Miniconda
 You made need to [initialize](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) Conda, depending on which shell you use (e.g. bash, zsh, csh, fish, xonsh). You can specify the shell or just initialize all.
 
 ```
