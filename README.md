@@ -18,5 +18,5 @@ Concatenate FASTQ files with identical names. Its original purpose was to combin
 Trim primers and sort reads according to their unique adapter sequences. [Mothur](https://mothur.org/wiki/make.contigs/) has this ability, however it also merges paired-end reads in the process. Its original purpose was to sort reads from mutiple isolate 16S rRNA genes, sequenced simultaneously, based on their unique barcodes on the 5' ends of primers. This will be updated so it will take a list of file names as input.
 
 
-### download_multiple_SRA
+### download_multiple_SRA.sh
 Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra). It's currently designed to download files with names that contain a series of numbers, which is typical for BioProjects (e.g., runs in project PRJNA597057 range from SRR10755563 to SRR10755886). This will be updated so it will take a list of run names as input.
