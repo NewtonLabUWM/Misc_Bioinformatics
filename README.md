@@ -15,7 +15,7 @@ Concatenate FASTQ files with identical names. Its original purpose was to combin
 
 
 ### Demultiplex_fastq.sh
-Trim primers and sort reads according to their unique adapter sequences. [Mothur](https://mothur.org/wiki/make.contigs/) has this ability, however it also merges paired-end reads in the process. This script's original purpose was to sort reads from mutiple isolate 16S rRNA genes, sequenced simultaneously, based on their unique barcodes on the 5' ends of primers. This will be updated so it will take a list of file names as input.
+Trim primers and sort reads according to their unique barcodes. [Mothur](https://mothur.org/wiki/make.contigs/) has this ability, however it also merges paired-end reads in the process. This script's original purpose was to sort reads from mutiple isolate 16S rRNA genes, sequenced simultaneously, based on unique oligos on the 5' ends of primers. This will be updated so it will take a list of file names as input.
 
 
 ### download_multiple_SRA.sh
