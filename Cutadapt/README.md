@@ -15,6 +15,15 @@ Cutadapt [requires](https://cutadapt.readthedocs.io/en/stable/installation.html#
 Because it makes life [easier](https://bioconda.github.io/user/install.html).
 
 
+## Initialize Miniconda
+You made need to [initialize](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) Conda, depending on which shell you use (e.g. bash, zsh, csh, fish, xonsh). You can specify the shell or just initialize all.
+
+
+```
+lou$ conda init --all 
+```
+
+
 ## Install Cutadapt
 
 Creating a [virtual environment](https://cutadapt.readthedocs.io/en/stable/installation.html) allows Cutadapt to access the Python versions and packages it depends on.
@@ -33,7 +42,6 @@ Without the venv, Cutadapt commands will not work.
 lou$ cutadapt --version
 -bash: cutadapt: command not found
 ```
-
 
 
 
