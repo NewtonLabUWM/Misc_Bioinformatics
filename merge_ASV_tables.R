@@ -13,6 +13,7 @@
 #   1. load all CSVs simultaneously
 #   2. store them in a list
 #   3. merge them by their FASTAs
+#   4. give each sample a source dataset name
 
 # so in the end, i will have one large matrix with
 # ALL sample names as rows, and ALL UNIQUE ASVs
