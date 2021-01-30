@@ -16,7 +16,7 @@
 #   4. give each sample a source dataset name
 
 # so in the end, i will have one large matrix with
-# ALL sample names as rows, and ALL UNIQUE ASVs
+# ALL sample names as rows, and all UNIQUE ASVs
 # as columns.
 # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
