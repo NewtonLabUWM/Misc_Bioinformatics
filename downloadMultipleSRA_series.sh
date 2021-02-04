@@ -9,7 +9,7 @@
 
 
 # this bioproject has 36 samples,
-# with run numbers ranging from
+# with run numbers in a series from
 # SRR11487869 to SRR11487904
 
 # using SRR11487 as the prefix, then
