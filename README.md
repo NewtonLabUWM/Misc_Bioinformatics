@@ -19,15 +19,11 @@ Trim primers and sort reads according to their unique barcodes. [Mothur](https:/
 
 
 ### downloadMultipleSRA_series.sh
-Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
-
-Use when you're interested in runs that are named as a series of numbers, which is typical for BioProjects (e.g., runs in project PRJNA597057 range from SRR10755563 to SRR10755886).
+Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra). Use when you're interested in runs that are named as a series of numbers, which is typical for BioProjects (e.g., runs in project PRJNA597057 range from SRR10755563 to SRR10755886).
 
 
 ### downloadMultipleSRA_text.sh
-Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra). 
-
-Use when you're interested in runs that are not named in a series. Create a text file with "_runs.txt" at the end of the name. For example...
+Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra). Use when you're interested in runs that are not named in a series. Create a text file with "_runs.txt" at the end of the name. For example...
 
 ```
 lou$ head salmon_runs.txt
