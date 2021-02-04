@@ -15,6 +15,12 @@
 # a text file named "SRA_runs.txt" has
 # the runs i want, each in a new line
 
+# the command fastq-dump is from sra-tools
+# https://anaconda.org/bioconda/sra-tools
+
+# parameter details
+# https://ncbi.github.io/sra-tools/fastq-dump.html
+
 
 input="*_runs.txt"
 
