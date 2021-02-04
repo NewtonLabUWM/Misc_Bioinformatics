@@ -23,10 +23,10 @@ Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.n
 
 
 ### downloadMultipleSRA_text.sh
-Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra). Use when you're interested in runs that are not named in a series. Create a text file with "_runs.txt" at the end of the name. For example...
+Download multiple files from NCBI [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra). Use when you're interested in runs that are not named in a series. Create a text file called "runs.txt" at the end of the name. For example...
 
 ```
-lou$ head salmon_runs.txt
+lou$ head runs.txt
 ERR2129782
 ERR2129783
 ERR2129800
