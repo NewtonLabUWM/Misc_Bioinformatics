@@ -22,7 +22,7 @@
 # https://ncbi.github.io/sra-tools/fastq-dump.html
 
 
-input="*_runs.txt"
+input="runs.txt"
 
 
 while IFS= read -r line
