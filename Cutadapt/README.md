@@ -1,6 +1,6 @@
 # Trimming primers from 16S rRNA gene sequences
 
-## Check Python version
+## Do you have Python3 yet?
 
 ```
 lou$ python --version
