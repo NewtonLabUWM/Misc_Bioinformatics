@@ -8,13 +8,26 @@
 #####################################
 
 
+###############
+### install ###
+###############
+
+# using virtual env
+
+# $ conda init --all
+# $ conda create --name rgi rgi=5.1.1
+# $ conda activate rgi
+# $ rgi --help
+
+
+
 
 #######################
 ### before starting ###
 #######################
 
-# conda init --all
-# conda activate rgi
+# $ conda init --all
+# $ conda activate rgi
 
 
 
