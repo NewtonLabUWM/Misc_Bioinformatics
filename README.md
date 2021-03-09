@@ -38,3 +38,7 @@ ERR2129875
 ERR2129891
 ERR2129909
 ````
+
+
+### rgiFASTA.sh
+Align all FASTAs in a directory with CARD's resistance gene identifier ([RGI](https://card.mcmaster.ca/analyze/rgi)).
