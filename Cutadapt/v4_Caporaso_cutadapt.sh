@@ -8,6 +8,9 @@
 #########################################
 
 
+# primer source:
+# https://www.pnas.org/content/108/Supplement_1/4516
+
 # be in directory where raw reads are stored.
 
 # trimmed reads will be sorted into new directories,
