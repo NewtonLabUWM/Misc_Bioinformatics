@@ -8,6 +8,9 @@
 ############################################
 
 
+# primer source:
+# https://vamps2.mbl.edu/resources/primers
+
 # be in directory where raw reads are stored.
 # make sure the file "v4v5_revs.fasta" is in
 # this directory as well.
