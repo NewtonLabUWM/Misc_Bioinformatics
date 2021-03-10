@@ -42,3 +42,7 @@ ERR2129909
 
 ### rgiFASTA.sh
 Align all FASTAs in a directory with CARD's resistance gene identifier ([RGI](https://card.mcmaster.ca/analyze/rgi)).
+
+
+### deepARG_organize.R
+Load and organize results from the [deepARG](https://bench.cs.vt.edu/deeparg_analyze/) online tool. 
