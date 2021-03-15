@@ -52,7 +52,7 @@ Remember to make it executable. Put the script in the same directory as the FAST
 lou$ chmod u+x fastaToCSV.sh
 ```
 
-Then execute it with the FASTA file name.
+Then execute it with the FASTA file name. The result is a spreadsheet with two columns, "Headers" and "FASTA."
 ```
 lou$ ./fastaToCSV.sh FILE_NAME.fasta
 ```
