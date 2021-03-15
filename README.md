@@ -46,3 +46,13 @@ Align all FASTAs in a directory with CARD's resistance gene identifier ([RGI](ht
 
 ### fastaToCSV.sh
 Have a FASTA file? Want to work with it in Excel or R? Use this. 
+
+Remember to make it executable. Put the script in the same directory as the FASTA file you'd like to convert. Run this:
+```
+lou$ chmod u+x fastaToCSV.sh
+```
+
+Then execute it with the FASTA file name.
+```
+lou$ ./fastaToCSV.sh FILE_NAME.fasta
+```
