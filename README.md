@@ -42,3 +42,7 @@ ERR2129909
 
 ### rgiFASTA.sh
 Align all FASTAs in a directory with CARD's resistance gene identifier ([RGI](https://card.mcmaster.ca/analyze/rgi)).
+
+
+### fastaToCSV.sh
+Have a FASTA file? Want to look at it in Excel or R? Use this. 
