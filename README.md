@@ -45,4 +45,4 @@ Align all FASTAs in a directory with CARD's resistance gene identifier ([RGI](ht
 
 
 ### fastaToCSV.sh
-Have a FASTA file? Want to look at it in Excel or R? Use this. 
+Have a FASTA file? Want to work with it in Excel or R? Use this. 
