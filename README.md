@@ -44,6 +44,10 @@ ERR2129909
 Align all FASTAs in a directory with CARD's resistance gene identifier ([RGI](https://card.mcmaster.ca/analyze/rgi)).
 
 
+### deepARG_organize.R
+Load and organize results from the [deepARG](https://bench.cs.vt.edu/deeparg_analyze/) online tool. 
+
+
 ### fastaToCSV.sh
 Have a FASTA file? Want to work with it in Excel or R? Use this. 
 
