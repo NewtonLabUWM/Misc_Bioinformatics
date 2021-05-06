@@ -38,8 +38,12 @@
 
 
 for file in $@; do
+
+	echo "\n\nStripping" ; echo $file
+
 	awk '!/^>/ { printf "%s", $0; n = "\n" } 
 		/^>/ { print n $0; n = "" }
 		END { printf "%s", n }
-		' "$@" > strip_$@
+		' "$file" > strip_$file
+		
 done
