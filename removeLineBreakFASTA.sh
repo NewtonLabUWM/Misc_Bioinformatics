@@ -39,7 +39,7 @@
 
 for file in $@; do
 
-	echo "\n\nStripping" ; printf $file
+	echo "\n\nStripping" ; echo $file
 
 	awk '!/^>/ { printf "%s", $0; n = "\n" } 
 		/^>/ { print n $0; n = "" }
