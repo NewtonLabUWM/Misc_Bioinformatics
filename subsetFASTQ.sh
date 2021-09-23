@@ -16,10 +16,10 @@
 
 for gzipped in *.gz; do
     if [ -e "$gzipped" ]; then
-    	echo "\n . . . Unzipping" $gzipped " . . ."
+    	echo "\n. . . Unzipping" $gzipped ". . ."
     	gunzip $gzipped
     else
-    	echo "\nNo gzip files here!\n"
+    	echo "\nWe already unzipped these files!\n"
     fi
 done
 
@@ -34,23 +34,18 @@ echo
 
 mkdir Subsetted
 
-echo "\n\nSubsetting . . .\n"
+
 
 for unzipped in *.fastq; do
     output=./Subsetted/sub_$unzipped
     if [ ! -e $output ]; then
+        echo "\n\nSubsetting . . .\n" $unzipped ". . ."
         head -n 5000 $unzipped > ./Subsetted/sub_$unzipped
     else
         echo $output
-        echo "\nWe already changed these!\n\n"
+        echo "\nWe already subsetted these files!\n\n"
     fi
 done
-
-
-# results
-grep -c "@" *.fastq > numReads_raw.txt
-grep -c "@" ./Subsetted/*.fastq > numReads_subbed.txt
-
 
 
 
@@ -59,15 +54,40 @@ grep -c "@" ./Subsetted/*.fastq > numReads_subbed.txt
 ### re-zip ###
 ##############
 
+
+# raw files
 for unzipped in *.fastq; do
     if [ -e "$unzipped" ]; then
-        echo "\n . . . Zipping" $unzipped " . . ."
+        echo "\n. . . Zipping" $unzipped ". . ."
         gzip $unzipped
     else
-        echo "\nAlready zipped back up!\n"
+        echo "\nRaw files already zipped back up!\n"
     fi
 done
 
-echo
+
+
+# subsetted files
+cd Subsetted
+
+for unzipped in *.fastq; do
+    if [ -e "$unzipped" ]; then
+        echo "\n. . . Zipping" $unzipped ". . ."
+        gzip $unzipped
+    else
+        echo "\nSubsetted files already zipped back up!\n"
+    fi
+done
+
+
+
+# # results
+# echo "\n\nCounting raw reads . . ."
+# grep -c "@" *.fastq > numReads_raw.txt
+
+# echo "\n\nCounting subsetted reads . . ."
+# grep -c "@" ./Subsetted/*.fastq > numReads_subbed.txt
+# echo
+
 
 echo "Done!"
