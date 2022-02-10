@@ -1,31 +1,29 @@
 ########################################################
-### demultiplexing fastq files based on unique barcodes.
-### nexteras already trimmed? files decompressed.
-### Lou LaMartina, started April 12, 2021
+### demultiplexing fastq files based on unique barcodes,
+### representing individual microbial isolates
+### Lou LaMartina, updated Feb 9, 2022
 ########################################################
 
 
 import csv
 import numpy as np
 
+np.warnings.filterwarnings('ignore', category = np.VisibleDeprecationWarning)
 
 
-##############
-### prompt ###
-##############
-
-
+####################
+### prompt files ###
+####################
 
 # sample barcode mapping
 sampleFile = input(
     "\n\n= = = = = = = = = = = = =\n\n"\
-    "SAMPLE DATA FORMAT\n\n"\
+    "SAMPLE DATA FORMAT (no headers)\n\n"\
     "\tComma separated (.csv)\n\n"\
     "\tColumn A: sample name\n\n"\
     "\tColumn B: forward barcode name\n\n"\
     "\tColumn C: reverse barcode name\n\n"\
     "= = = = = = = = = = = = =\n\nEnter sample data file name: \n\n> ")
-
 
 
 # barcoded illumina reads
@@ -40,75 +38,93 @@ R2File = input("\n\n= = = = = = = = = = = = =\n\nEnter R2 file name: \n\n> ")
 
 
 
+######################
+### dissect fastqs ###
+######################
+
+# END GOAL = { ids : [ reads : scores ], ... }
 
 
+### forwards ###
 
+idsF = []
+readsF = []
+scoresF = []
 
-### fastq
+with open(R1File, 'r') as fileF:
 
-
-# strip IDs, reads, and scores from FASTQ
-
-ids = []
-reads = []
-scores = []
-
-with open(R1File, 'r') as ifile:
-
-    for line in ifile:
+    for line in fileF:
         if line.startswith('@'):
             
             # strip sequence IDs
-            ids.append(line.strip())
+            idsF.append(line.strip())
+
+            # remove strings after white space in headers
+            # (need sequence IDs to be identical for F and R,
+            # which they are before this space)
+            idsF = [i.split(' ', 1)[0] for i in idsF]
             
         if line.startswith('@'):
             
             # strip sequence reads
-            reads.append(next(ifile, '').strip())
+            readsF.append(next(fileF, '').strip())
 
         if line.startswith('+'):
             
             # strip quality scores
-            scores.append(next(
-                ifile, '').strip())
-
+            scoresF.append(next(fileF, '').strip())
 
 
 # store in dictionary { ids : [ reads : scores ] }
-R1Dict = { x : [ y, z, x ] for x, y, z in zip(ids, reads, scores) }
+R1Dict = { x : [ y, z, x ] for x, y, z in zip(idsF, readsF, scoresF) }
 
 
 
-with open(R2File, 'r') as ifile:
+### reverses ###
 
-    for line in ifile:
+idsR = []
+readsR = []
+scoresR = []
+
+with open(R2File, 'r') as fileR:
+
+    for line in fileR:
         if line.startswith('@'):
             
             # strip sequence IDs
-            ids.append(line.strip())
+            idsR.append(line.strip())
+
+            # remove strings after white space in headers
+            # (need sequence IDs to be identical for F and R,
+            # which they are before this space)
+            idsR = [i.split(' ', 1)[0] for i in idsR]
             
         if line.startswith('@'):
             
             # strip sequence reads
-            reads.append(next(ifile, '').strip())
+            readsR.append(next(fileR, '').strip())
 
         if line.startswith('+'):
             
             # strip quality scores
-            scores.append(next(
-                ifile, '').strip())
-
+            scoresR.append(next(fileR, '').strip())
 
 
 # store in dictionary { ids : [ reads : scores ] }
-R2Dict = { x : [ y, z, x ] for x, y, z in zip(ids, reads, scores) }
+R2Dict = { x : [ y, z, x ] for x, y, z in zip(idsR, readsR, scoresR) }
+
+
+# verbose
+print("\n\n\t= = = Read", len(R1Dict), "forward reads", "&", len(R2Dict), "reverse reads = = =")
 
 
 
 
+#######################
+### dissect samples ###
+#######################
 
-
-### samples
+# END GOAL { sample : barcode, ... } 
 
 
 # open file
@@ -120,9 +136,19 @@ with open(sampleFile, encoding = 'utf-8-sig') as f:
 # create dictionary { sample : barcode } 
 sampleDict = { item[0] : item[1:] for item in sampleData }
 
-    
-    
 
+# define column with F barcodes
+def codeF(smps):
+    return [item[0] for item in smps]
+
+
+# define column with R barcodes
+def codeR(smps):
+    return [item[1] for item in smps]
+
+    
+# verbose
+print("\n\n\t= = = Read", len(sampleDict), "samples = = = \n\n")
 
 
 
@@ -131,88 +157,108 @@ sampleDict = { item[0] : item[1:] for item in sampleData }
 ### match barcodes ###
 ######################
 
+# END GOAL = { barcode : [ read, scores, id ], ... }
 
 
+### forwards ###
 
-### extract barcodes from sample data
-
-# forwards
-def codeF(smps):
-    return [item[0] for item in smps]
-
-
-# reverses
-def codeR(smps):
-    return [item[1] for item in smps]
-
-
-
-
-
-
-### match barcodes to fastq reads
-
-
-# forwards
 uniqueFs = list(np.unique(codeF(list(sampleDict.values()))))
 matchFs = []
 
-for f in uniqueFs:
-    Fs = list(filter(lambda a : f in a[0], R1Dict.values()))
+# bc is unique barcode
+for bc in uniqueFs:
+
+    # organizes dictionary to those that match the barcode
+    Fs = list(filter(lambda a : bc in a[0], R1Dict.values()))
+
+    # make list of matches
     matchFs.append(Fs)
 
 
 
+### reverses ###
 
-# reverses
 uniqueRs = list(np.unique(codeR(list(sampleDict.values()))))
 matchRs = []
 
-for r in uniqueRs:
-    Rs = list(filter(lambda a : r in a[0], R2Dict.values()))
+for bc in uniqueRs:
+    Rs = list(filter(lambda a : bc in a[0], R2Dict.values()))
     matchRs.append(Rs)
 
 
-
-# create dictionaries { barcode : [ read, scores, id ] }
-matchFDict = { uniqueFs[f] : matchFs[f] for f in range(len(uniqueFs)) }
-matchRDict = { uniqueRs[r] : matchRs[r] for r in range(len(uniqueRs)) }
-
+# create dictionary { barcode : [ read, scores, id ] }
+matchFDict = { uniqueFs[bc] : matchFs[bc] for bc in range(len(uniqueFs)) }
+matchRDict = { uniqueRs[bc] : matchRs[bc] for bc in range(len(uniqueRs)) }
 
 
-# match
+# verbose
+print("\t= = = Forward barcodes = = =")
+for i in range(len(matchFs)):
+    print("\t\t", uniqueFs[i], "matched", len(matchFs[i]), "times")
+
+print("\t= = = Reverse barcodes = = =")
+for i in range(len(matchRs)):
+    print("\t\t", uniqueRs[i], "matched", len(matchRs[i]), "times")
+
+
+
+
+#####################
+### match samples ###
+#####################
+
+# END GOAL = { sample : [[ read, scores, id ], [ read, scores, id ], ... ] }
+
+
+### forwards ###
+
 matchFSmps = []
 
-for s in sampleDict:
-    for f in uniqueFs:
-        if f in sampleDict[s]:
-            smps = matchFDict[f]
+# smp is individual samples
+for smp in sampleDict:
+
+    # bc is barcodes
+    for bc in uniqueFs:
+
+        # find that barcode in that sample
+        if bc in sampleDict[smp]:
+
+            # extract read, score of that match
+            smps = matchFDict[bc]
+
+            # save to list
             matchFSmps.append(smps)
+
+
+###  reverses ###
 
 matchRSmps = []
 
-for s in sampleDict:
-    for r in uniqueRs:
-        if r in sampleDict[s]:
-            smps = matchRDict[r]
+# smp is individual samples
+for smp in sampleDict:
+
+    # bc is barcodes
+    for bc in uniqueRs:
+
+        # find that barcode in that sample
+        if bc in sampleDict[smp]:
+
+            # extract read, score of that match
+            smps = matchRDict[bc]
+
+            # save to list
             matchRSmps.append(smps)
 
 
-            
-# create dictionaries { sample : [[ read, scores, id ], [ read, scores, id ] ... ] }
+# create dictionary { sample : [[ read, scores, id ], [ read, scores, id ] ... ] }
 matchRSmpsDict = { list(sampleDict.keys())[s] : matchRSmps[s] for s in range(len(sampleDict)) }
 matchFSmpsDict = { list(sampleDict.keys())[s] : matchFSmps[s] for s in range(len(sampleDict)) }
 
 
-
-
-# turn into matrix
+# convert to matrix
 sampleNames = list(sampleDict.keys())
-
 matrixR = np.array([matchRSmpsDict[i] for i in sampleNames])
 matrixF = np.array([matchFSmpsDict[i] for i in sampleNames])
-
-
 
 
 # extract columns from matrix
@@ -222,14 +268,30 @@ def column(matrix, i):
 
 
 
+##########################
+### match sequence IDs ###
+##########################
 
-# determine what @seqs belong to what samples
+# END GOAL = { sample : [ @seq, @seq, @seq ], ... }
+
 
 seqsToSmps = []
+
+# in each sample
 for i in range(len(sampleNames)):
+
+        # for sequence IDs shared in F and R
         if set(column(matrixF[i], 2)) & set(column(matrixR[i], 2)):
+
+            # create list of shared IDs for each sample
             seqs = list(set(column(matrixF[i], 2)) & set(column(matrixR[i], 2)))
             seqsToSmps.append(seqs)
+        
+        elif set(column(matrixF[i], 2)) | set(column(matrixR[i], 2)):
+            print("\n\n\t= = =", sampleNames[i], "\t: NO MATCHES = = =")
+            sampleNames.remove(sampleNames[i])
+
+
 
 
 
@@ -238,50 +300,78 @@ seqsToSmpsDict = { sampleNames[i] : seqsToSmps[i] for i in range(len(sampleNames
 
 
 
-# convert to matrix
-seqsToSmpsMatrix = np.array([seqsToSmpsDict[i] for i in sampleNames])
+# verbose
+print("\n\n\t= = = Number of matches = = =")
+for i in range(len(sampleNames)):
+    print("\t\t", list(seqsToSmpsDict.keys())[i], "\t:", len(list(seqsToSmpsDict.values())[i]), "reads")
 
 
 
-# create dictionary { sample : [ [ @seq, scores, read ], [ @seq, scores, read ] ... ] }
+
+############################
+### match reads & scores ###
+############################
+
+# END GOAL = { sample : [ [ @seq, scores, read ], [ @seq, scores, read ] ... ] }
+
+
+### forwards ###
+
 mappedF = {}
 
 for i in range(len(sampleNames)):
+
+    # give each sample (dictionary key) an empty list (to fill with seqs & seq info)
     mappedF.setdefault(sampleNames[i], [])
-    
-    for j in range(len(seqsToSmpsMatrix[i])):
-        k = seqsToSmpsMatrix[i,j]
+
+    # j is range of # of seqs in that sample
+    for j in range(len(list(seqsToSmpsDict.values())[i])):
+
+        # k is a specific seq
+        k = list(seqsToSmpsDict.values())[i][j]
+
+        # l is that specific seq, a key in the dict, whose values are seq info
         l = list(R1Dict[k])
+
+        # appending that seq info to the proper position in our new dict
         mappedF[sampleNames[i]].append(l)
 
+
+
+### reverses ###
 
 mappedR = {}
 
 for i in range(len(sampleNames)):
+
+    # give each sample (dictionary key) and empty list (to fill with seqs & seq info)
     mappedR.setdefault(sampleNames[i], [])
-    
-    for j in range(len(seqsToSmpsMatrix[i])):
-        k = seqsToSmpsMatrix[i,j]
+
+    # j is range of # of seqs in that sample
+    for j in range(len(list(seqsToSmpsDict.values())[i])):
+
+        # k is a specific seq
+        k = list(seqsToSmpsDict.values())[i][j]
+
+        # l is that specific seq, a key in the dict, whose values are seq info
         l = list(R2Dict[k])
+
+        # appending that seq info to the proper position in our new dict
         mappedR[sampleNames[i]].append(l)
 
 
-
-
-
-
 # convert to matrices
-
 matrixMappedF = np.array([mappedF[i] for i in sampleNames])
 matrixMappedR = np.array([mappedR[i] for i in sampleNames])
 
 
 
 
+##########################
+### save as new fastqs ###
+##########################
 
-
-# save :) :) :) :)
-
+# R1 files
 for i in range(len(sampleNames)):
     with open("{}_R1.fastq".format(sampleNames[i]), "w") as finalF:
     
@@ -290,11 +380,11 @@ for i in range(len(sampleNames)):
             finalF.write("%s\r\n" % column(matrixMappedF[i], 0)[j])
             finalF.write("+\r\n")
             finalF.write("%s\r\n" % column(matrixMappedF[i], 1)[j])
-
-        
+  
 finalF.close()
 
 
+# R2 files
 for i in range(len(sampleNames)):
     with open("{}_R2.fastq".format(sampleNames[i]), "w") as finalR:
     
@@ -304,20 +394,20 @@ for i in range(len(sampleNames)):
             finalR.write("+\r\n")
             finalR.write("%s\r\n" % column(matrixMappedR[i], 1)[j])
 
-        
 finalR.close()
 
 
-
-
-
-
 # verbose
-print("\n\n\n= = = = = = = = = = = = =\n"\
-      "= = = = = = = = = = = = =\n\n\n"\
-      "%i unique reads sorted into %i R1 and R2 files.\n\n" %
-      (len(R1Dict) + len(R2Dict), len(sampleDict)))
+def sum_list(l):
+    sum = 0
+    for x in l:
+        sum += x
+    return sum
 
+nreads = []
+for i in range(len(sampleNames)):
+    nread = len(list(seqsToSmpsDict.values())[i])
+    nreads.append(nread)
 
-
-
+print("\n\n\n\t= = = %i unique reads sorted into %i R1 and R2 files = = =\n\n" %
+      (sum_list(nreads), len(sampleDict)))
