@@ -1,7 +1,7 @@
 ########################################################
 ### demultiplexing fastq files based on unique barcodes,
 ### representing individual microbial isolates
-### Lou LaMartina, updated Feb 9, 2022
+### Lou LaMartina, updated Feb 11, 2022
 ########################################################
 
 
@@ -17,23 +17,23 @@ np.warnings.filterwarnings('ignore', category = np.VisibleDeprecationWarning)
 
 # sample barcode mapping
 sampleFile = input(
-    "\n\n= = = = = = = = = = = = =\n\n"\
+    "\n\n= = = = = = = = = = = = =\n"\
     "SAMPLE DATA FORMAT (no headers)\n\n"\
-    "\tComma separated (.csv)\n\n"\
-    "\tColumn A: sample name\n\n"\
-    "\tColumn B: forward barcode name\n\n"\
+    "\tComma separated (.csv)\n"\
+    "\tColumn A: sample name\n"\
+    "\tColumn B: forward barcode name\n"\
     "\tColumn C: reverse barcode name\n\n"\
-    "= = = = = = = = = = = = =\n\nEnter sample data file name: \n\n> ")
+    "=== Enter sample data file name: > ")
 
 
 # barcoded illumina reads
-R1File = input(
-    "\n\n= = = = = = = = = = = = =\n\n"\
-    "FASTQ FILE FORMAT\n\n"\
+R1file = input(
+    "\n\n= = = = = = = = = = = = =\n"\
+    "FASTQ FILE FORMAT\n"\
     "\tUnzipped (.fastq; not .fastq.gz, .fastq.bz2, etc)"\
-    "\n\n= = = = = = = = = = = = =\n\nEnter R1 file name: \n\n> ")
+    "\n\n=== Enter R1 file name: > ")
 
-R2File = input("\n\n= = = = = = = = = = = = =\n\nEnter R2 file name: \n\n> ")
+R2file = input("\n=== Enter R2 file name: > ")
 
 
 
@@ -50,11 +50,20 @@ R2File = input("\n\n= = = = = = = = = = = = =\n\nEnter R2 file name: \n\n> ")
 idsF = []
 readsF = []
 scoresF = []
+count = 0
 
-with open(R1File, 'r') as fileF:
+with open(R1file, 'r') as fileF:
+    print("\n")
 
     for line in fileF:
+
         if line.startswith('@'):
+
+            # track progress - helpful for large files!    
+            count += 1
+            if count % 10000 == 0:
+                pct = "{:.0f}".format(count / open(R1file, 'r').read().count("@M") * 100)
+                print("\tStripped", count, "forward reads (", pct, "% complete )")
             
             # strip sequence IDs
             idsF.append(line.strip())
@@ -85,11 +94,20 @@ R1Dict = { x : [ y, z, x ] for x, y, z in zip(idsF, readsF, scoresF) }
 idsR = []
 readsR = []
 scoresR = []
+count = 0
 
-with open(R2File, 'r') as fileR:
+with open(R2file, 'r') as fileR:
+    print("\n")
 
     for line in fileR:
+
         if line.startswith('@'):
+
+            # track progress - helpful for large files!    
+            count += 1
+            if count % 10000 == 0:
+                pct = "{:.0f}".format(count / open(R2file, 'r').read().count("@M") * 100)
+                print("\tStripped", count, "reverse reads (", pct, "% complete )")
             
             # strip sequence IDs
             idsR.append(line.strip())
@@ -112,10 +130,6 @@ with open(R2File, 'r') as fileR:
 
 # store in dictionary { ids : [ reads : scores ] }
 R2Dict = { x : [ y, z, x ] for x, y, z in zip(idsR, readsR, scoresR) }
-
-
-# verbose
-print("\n\n\t= = = Read", len(R1Dict), "forward reads", "&", len(R2Dict), "reverse reads = = =")
 
 
 
