@@ -42,7 +42,7 @@ Navigating common challenges in microbial ecology.
 
 3. <b>subsetFASTQ.sh.</b> Subset a large FASTQ into smaller ones. Was helpful when learning error rates on a large dataset in dada2.
 
-4. <b>fastaToCSV.sh.</b> Have a FASTA file? Want to work with it in Excel or R? Use this. Remember to make it executable: `chmod u+x fastaToCSV.sh` The result is a spreadsheet with two columns, "Headers" and "FASTA."
+4. <b>fastaToCSV.sh.</b> Have a FASTA file? Want to work with it in Excel or R? Use this. The result is a spreadsheet with two columns, "Headers" and "FASTA."
 
 
 ## ARG_tools
