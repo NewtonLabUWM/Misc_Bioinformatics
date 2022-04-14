@@ -1,6 +1,6 @@
 # How to find identical sequences between two FASTA files
 
-Lou LaMartina & Aurash Mohaimani Updated June 17, 2020
+Lou LaMartina & Aurash Mohaimani
 
 
 
