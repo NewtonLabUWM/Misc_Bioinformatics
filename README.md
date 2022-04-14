@@ -38,7 +38,7 @@ Navigating common challenges in microbial ecology.
 ## navigateFASTQ-A
 1. <b>catFASTQ.sh.</b> Concatenate FASTQ files with identical names. Its original purpose was to combine files from two sequencing runs (on full and nano Illumina flow cells) on the same samples. 
 
-2. <b>calculateRPKM.py.</b>. Count number of bases in FASTA and convert to reads per kilobase million (rpkm). Metric used in metatrascriptomics.
+2. <b>calculateRPKM.py.</b> Count number of bases in FASTA and convert to reads per kilobase million (rpkm). Metric used in metatrascriptomics.
 
 3. <b>subsetFASTQ.sh.</b> Subset a large FASTQ into smaller ones. Was helpful when learning error rates on a large dataset in dada2.
 
