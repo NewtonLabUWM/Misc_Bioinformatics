@@ -30,7 +30,7 @@ Navigating common challenges in microbial ecology.
 ## NCBI
 1. <b>removeLineBreakFASTA.sh.</b> Downloading contigs from NCBI, there are line breaks at 800bp. Remove those with this.
 
-2. </b>downloadMultipleSRA_series.sh.</b> Download multiple files from Sequence Read Archive. Use when you're interested in runs that are named as a series of numbers, which is typical for BioProjects (e.g., runs in project PRJNA597057 range from SRR10755563 to SRR10755886).
+2. <b>downloadMultipleSRA_series.sh.</b> Download multiple files from Sequence Read Archive. Use when you're interested in runs that are named as a series of numbers, which is typical for BioProjects (e.g., runs in project PRJNA597057 range from SRR10755563 to SRR10755886).
 
 3. <b>downloadMultipleSRA_text.sh.</b> Download multiple files from Sequence Read Archive. Use when you're interested in runs that are not named in a series. Create a text file called "runs.txt" with all desired runs.
 
