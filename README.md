@@ -22,7 +22,7 @@ Navigating common challenges in microbial ecology.
 
 
 ## DADA2
-1. <b>filterAndTrim_bigData.R.</b> At the [filter and trim](https://benjjneb.github.io/dada2/tutorial.html) step, process groups of samples one at a time instead of all samples simultaneously. Saves time and computer power and crashes and headaches.
+1. <b>filterAndTrim_bigData.R.</b> At the filterAndTrim step, process groups of samples one at a time instead of all samples simultaneously. Saves time and computer power and crashes and headaches.
 
 2. <b>merge_ASV_tables.R.</b> Helpful when you have many ASV tables from DADA2 and want to merge them by unique FASTA sequences.
 
