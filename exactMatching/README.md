@@ -26,7 +26,7 @@ At this point, the script is just a text file. You need to turn it into an actua
 
 ### 5. Run the tool!
 
-The usage goes like this: `./findExactFA.pl ref_FASTA query_FASTA`, separated by spaces. At the end, add a file name and a >, which tells it to output the results into that file.
+The usage goes like this: `./findExactFA.pl ref.fasta query.fasta`, separated by spaces. At the end, add a file name and a >, which tells it to output the results into that file.
 
 ### 6. Analyze the results.
 
