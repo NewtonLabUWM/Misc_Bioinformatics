@@ -8,15 +8,15 @@ You have two FASTA files, and you are interested in what sequences they share. O
 
 ### 1. Put all necessary files in the same directory, and move to that directory in the terminal.
 
-The folder findExactFA has two fasta files, TimeSeries_V4V5_dada2.fasta and TimeSeries_Flavobacteriales_all.fasta, and the script for the alignment tool, findExactFA.pl. Go to that directory. If the folder is on your Desktop, run `cd Desktop/findExactFA` in terminal. Make sure your computer has perl installed. You can find out by running `perl --version` in terminal. A bunch of stuff will come up if you have it; if you don't, it will say it does not recognize that command.
+The folder findExactFA has two fasta files, <b>TimeSeries_V4V5_dada2.fasta</b> and <b>TimeSeries_Flavobacteriales_all.fasta</b>, and the script for the alignment tool, findExactFA.pl. Go to that directory. If the folder is on your Desktop, run `cd Desktop/findExactFA` in terminal. Make sure your computer has perl installed. You can find out by running `perl --version` in terminal. A bunch of stuff will come up if you have it; if you don't, it will say it does not recognize that command.
 
 ### 2. Determine your reference file.
 
-In this case, it is the TimeSeries_V4V5_dada2.fasta file. This has all sequences from the wastewater metastudy that was processed in dada2.
+In this case, it is the <b>TimeSeries_V4V5_dada2.fasta</b> file. This has all sequences from the wastewater metastudy that was processed in dada2.
 
 ### 3. Determine your query file.
 
-TimeSeries_Flavobacteriales_all.fasta has all sequences from wastewater that were classified as Flavobacteriales.
+<b>TimeSeries_Flavobacteriales_all.fasta</b> has all sequences from wastewater that were classified as Flavobacteriales.
 
 ### 4. Make the findExactFA tool executable.
 
