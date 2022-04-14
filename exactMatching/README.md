@@ -4,7 +4,7 @@ Lou LaMartina & Aurash Mohaimani
 
 
 
-You have two FASTA files, and you are interested in what sequences they share. One is your "query" file, which usually has sequences from your samples of interest. You also have the "database" file, which is usually larger and has all possible matches. In this example, the database file contains all 16S V4-V5 sequences from a wastewater metastudy. The query file has all sequences belonging to Flavobacteriales from that study. After matching these, we will know which reads in the database file are from Flavobacteriales.
+You have two FASTA files, and you are interested in what sequences they share. One is your "query" file, which usually has sequences from your samples of interest. You also have the "database" file, which is usually larger and has all possible matches. In this example, the database file contains all 16S V4-V5 sequences from a wastewater metastudy. The query file has all sequences belonging to <i>Flavobacteriales</i> from that study. After matching these, we will know which reads in the database file are from <i>Flavobacteriales</i>.
 
 ### 1. Put all necessary files in the same directory, and move to that directory in the terminal.
 
@@ -18,7 +18,7 @@ In this case, it is the <b>TimeSeries_V4V5_dada2.fasta</b> file. This has all se
 
 ### 3. Determine your query file.
 
-<b>TimeSeries_Flavobacteriales_all.fasta</b> has all sequences from wastewater that were classified as Flavobacteriales.
+<b>TimeSeries_Flavobacteriales_all.fasta</b> has all sequences from wastewater that were classified as <i>Flavobacteriales</i>.
 
 ### 4. Make the findExactFA tool executable.
 
