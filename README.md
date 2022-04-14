@@ -46,6 +46,6 @@ Navigating common challenges in microbial ecology.
 
 
 ## ARG_tools
-1. <b>rgiFASTA.sh.</b> Mine ARGs from FASTAs in a directory with CARD's resistance gene identifier ([RGI](https://card.mcmaster.ca/analyze/rgi)).
+1. <b>rgiFASTA.sh.</b> Mine ARGs from FASTAs in a directory with CARD's resistance gene identifier.
 
-2. <b>deepARG_organize.R.</b> Load and organize results from the [deepARG](https://bench.cs.vt.edu/deeparg_analyze/) online tool. 
+2. <b>deepARG_organize.R.</b> Load and organize results from the deepARG online tool. 
