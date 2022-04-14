@@ -29,7 +29,7 @@ At this point, the script is just a text file. You need to turn it into an actua
 The usage goes like this: `./findExactFA.pl ref.fasta query.fasta`, separated by spaces. At the end, add a results file name and a `>`, which tells it to output the results into that file.
 
 ```
-./findExactFA.pl TimeSeries_V4V5_dada2.fasta TimeSeries_Flavobacteriales_all.fasta > test_align.txt
+lou$ ./findExactFA.pl TimeSeries_V4V5_dada2.fasta TimeSeries_Flavobacteriales_all.fasta > test_align.txt
 ```
 
 ### 6. Analyze the results.
