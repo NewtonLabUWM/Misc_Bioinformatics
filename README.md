@@ -45,7 +45,9 @@ Navigating common challenges in microbial ecology.
 4. <b>fastaToCSV.sh.</b> Have a FASTA file? Want to work with it in Excel or R? Use this. The result is a spreadsheet with two columns, "Headers" and "FASTA."
 
 
-## ARG_tools
+## toolsAndPipelines
 1. <b>rgiFASTA.sh.</b> Mine ARGs from FASTAs in a directory with CARD's resistance gene identifier.
 
 2. <b>deepARG_organize.R.</b> Load and organize results from the deepARG online tool. 
+
+3. <b>metaxa2.sh.</b> Assess taxonomy in assembled or unassembled metagenomes with Metaxa2.
