@@ -19,4 +19,4 @@ Cons: less full length information, potential fragmented genes
 
 
 
-I ended up using both and comparing? (shrug)
+I ended up using both and comparing (shrug)
