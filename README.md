@@ -50,7 +50,7 @@ Navigating common challenges in microbial ecology.
 
 2. <b>deepARG_organize.R.</b> Load and organize results from the deepARG online tool. 
 
-3. <b>metaxa2_([fastq or fasta].sh.</b> Assess taxonomy in assembled or unassembled metagenomes with Metaxa2.
+3. <b>metaxa2_[fastq/fasta].sh.</b> Assess taxonomy in assembled or unassembled metagenomes with Metaxa2.
 
 4. <b>integronFinder.sh.</b> Mine integron sequences from contigs with Integron Finder.
 
