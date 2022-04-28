@@ -16,3 +16,7 @@ Target sequence length > 100K, over comparison pipeline limit.
 Pros: no sequence length limit
 
 Cons: less full length information, potential fragmented genes
+
+
+
+I ended up using both and comparing? (shrug)
