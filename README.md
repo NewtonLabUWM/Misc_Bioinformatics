@@ -53,3 +53,5 @@ Navigating common challenges in microbial ecology.
 3. <b>metaxa2.sh.</b> Assess taxonomy in assembled or unassembled metagenomes with Metaxa2.
 
 4. <b>integronFinder.sh.</b> Mine integron sequences from contigs with Integron Finder.
+
+5. <b>mobileOG-db.sh.</b> Mine mobile genetic elements from the mobileOG database.
