@@ -32,6 +32,6 @@ for assemb in $assembs; do
     	# save all biosample data
     	esearch -db biosample -query $bs | efetch -format docsum > ./Metadata/all-$assemb.txt
 
-    # save select biosample data
-    echo $bp $bs $assemb $org > ./Metadata/sum-$assemb.txt
+    	# save select biosample data
+    	echo $bp $bs $assemb $org > ./Metadata/sum-$assemb.txt
 done
