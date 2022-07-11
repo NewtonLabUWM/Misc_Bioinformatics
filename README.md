@@ -34,6 +34,10 @@ Navigating common challenges in microbial ecology.
 
 3. <b>downloadMultipleSRA_text.sh.</b> Download multiple files from Sequence Read Archive. Use when you're interested in runs that are not named in a series. Create a text file called "runs.txt" with all desired runs.
 
+4. <b>ncbiTaxDB_scrape.sh.</b> With a list of NCBI IDs, scrape the taxonomy database webpage associated with it, keeping only taxonomy paths (Kingdom, Phylum, etc) in the resulting file.
+
+5. <b>ncbiAssemblyDB_scrape.sh</b> Sample thing, here we are scraping the NCBI assemby database for associated BioSamples.
+
 
 ## navigateFASTQ-A
 1. <b>catFASTQ.sh.</b> Concatenate FASTQ files with identical names. Its original purpose was to combine files from two sequencing runs (on full and nano Illumina flow cells) on the same samples. 
